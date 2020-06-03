@@ -54,11 +54,12 @@ class Mahasiswa{
   // parameterized constructors 
     Mahasiswa(this.nomorIM,this.namaMhs); 
   */
-  Mahasiswa.cusomtConstructor(){ // named constructor
+  Mahasiswa.customConstructor(){ // named constructor
     print('custom constructor');
   }
-   Mahasiswa.anotherCusomtConstructor(this.nomorIM, this.namaMhs); // named constructor
-
+  // named constructor
+  Mahasiswa.anotherCustomConstructor(this.nomorIM, this.namaMhs); 
+  
   void belajar(){
     print("${this.namaMhs} sedang belajar");
   }
