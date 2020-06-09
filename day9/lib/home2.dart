@@ -6,8 +6,7 @@ class Home2 extends StatefulWidget{
 }
 class _HomeState extends State<Home2>{
   int jmlCard = 1;
-  bool evenNama = true;
-  void _ubahNama(){
+  void _tambahItem(){
     setState(() {
       jmlCard++;
     });
@@ -24,7 +23,7 @@ class _HomeState extends State<Home2>{
         children: new List.generate(this.jmlCard, (index) => myLayoutWidget(index+1)),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _ubahNama,
+        onPressed: _tambahItem,
         child:Icon(Icons.plus_one),
         tooltip: 'tambah card',
         ),
