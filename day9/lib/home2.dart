@@ -15,7 +15,7 @@ class _HomeState extends State<Home2>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("FLUTTER BEGINER"),
+        title: Text("FLUTTER BEGINNER"),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
