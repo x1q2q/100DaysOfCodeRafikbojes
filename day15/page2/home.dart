@@ -7,7 +7,16 @@ class Home extends StatefulWidget{
 }
 class _HomeState extends State<Home>{
   @override
+  void initState(){
+    super.initState(); // memanggil method initState pada parent-class
+    print('initstate telah dijalankan'); // agar telihat
+  }
+
+  @override
+  int hitung =0;
   Widget build(BuildContext context) {
+    
+    print('build funtion telah dijalankan');
     return Scaffold(
       appBar: AppBar(
         title: Text("Flutter Beginner"),
@@ -20,6 +29,13 @@ class _HomeState extends State<Home>{
           child:Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              RaisedButton.icon(
+                onPressed:(){
+                  Navigator.pushNamed(context, '/notifikasi');
+                },
+                icon:Icon(Icons.notifications_active),
+                label:Text('Notifikasi Page'),
+              ),
               OutlineButton.icon(
                 onPressed:(){
                   Navigator.pushNamed(context, '/profil');
@@ -27,12 +43,14 @@ class _HomeState extends State<Home>{
                 icon: Icon(Icons.supervised_user_circle), 
                 label: Text('Profil Page'),
               ),
-              RaisedButton.icon(
-                onPressed:(){
-                  Navigator.pushNamed(context, '/notifikasi');
-                },
-                icon:Icon(Icons.notifications_active),
-                label:Text('Notifikasi Page'),
+              FlatButton(
+                onPressed: (){
+                  setState(() {
+                    hitung++;
+                  });
+                }, 
+                child: Text('Penghitung ke-$hitung'),
+                color: Colors.teal[100]
               )
             ],
           ),

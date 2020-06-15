@@ -6,13 +6,23 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil> {
-  void getDataFuture(){ // example async code
-    
+  void getData() async{ // example async code
+    // Future.delayed(Duration(seconds: 3),(){
+    //   print('teks ini akan diprint setelah 3detik');
+    // });
+    // print('ini tampil pertama meskipun di baris setelah teks'); 
+    String nm = await Future.delayed(Duration(seconds:3), (){
+      return 'Bojes';
+    });
+    String nim = await Future.delayed(Duration(seconds: 1),(){
+      return 'K359xx'; 
+    });
+    print('Mahasiswa bernama $nm dengan NIM $nim');
   }
   @override
   void initState(){
     super.initState();
-    getDataFuture();
+    getData();
   }
   @override
   Widget build(BuildContext context) {

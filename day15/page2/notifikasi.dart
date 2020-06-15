@@ -1,6 +1,8 @@
+import 'package:arkipelago_dev/page2/user.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'package:arkipelago_dev/page2/user_card.dart';
 
 class Notifikasi extends StatefulWidget {
   @override
@@ -8,22 +10,30 @@ class Notifikasi extends StatefulWidget {
 }
 
 class _NotifikasiState extends State<Notifikasi> {
-  String textJson;
-  Map body;
+  List<User> dataJson = [
+    // User(id: 1,userid: 2,title: 'halahg',body: 'lorem pipsum dolor'),
+  ];
+  List dataNew = [];
   void getData() async{
-    Response resp = await get('https://jsonplaceholder.typicode.com/posts');
-    this.body =jsonDecode(resp.body); 
-  }
-  void getJson(){
-    setState(() {
-      this.textJson = jsonEncode(this.body);
-    });
+    Response resp = await get('https://jsonplaceholder.typicode.com/posts?userId=1');
+    // List data = jsonDecode(resp.body);
+    var detail = jsonDecode(resp.body);
+    dataNew.add(detail);
+    for(int i=0;i<dataNew[0].length;i++){
+      dataJson.add(User(
+        id:dataNew[0][i]['id'],
+        userId:dataNew[0][i]['userId'],
+        title:dataNew[0][i]['title'],
+        body:dataNew[0][i]['body']
+      ));
+    }    
   }
   @override
   void initState(){ // function yang dijalankan pertama kali ketika meload class ini
     super.initState();
     getData();
   }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,14 +48,14 @@ class _NotifikasiState extends State<Notifikasi> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              RaisedButton(
-                child: Text('Read JSON'),
-                onPressed: getJson,
-                color: Colors.teal,
-              ),
-              Text('${this.textJson}'),
-            ],
+            children: dataJson.map((dt) => UserCard(
+              user: dt,
+              delete:(){
+                setState(() {
+                  dataJson.remove(dt);
+                }); 
+              }
+            )).toList(),
           ),
         ),
       ),
