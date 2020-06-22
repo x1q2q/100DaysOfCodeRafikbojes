@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'page1/home.dart';
+import 'page2/home.dart';
 
 void main() => runApp(new MyApp());
 
@@ -16,3 +16,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+// rafikbojes, 5:38 PM, 22/06/2020
