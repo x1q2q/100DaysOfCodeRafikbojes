@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
           child: Text(value),
         )
       ).toList();
-    
+      
   void _ubahProg(){
     setState(() {
       this.progress = !this.progress;
@@ -33,31 +33,37 @@ class _HomeState extends State<Home> {
       onTap: (){},
       child: Padding(
         padding: EdgeInsets.all(10.0),
-        child: Row(
-          children: <Widget>[
-            Text('LOGIN FORM',
+        child: Center(child: Text('LOGIN FORM',
             style: TextStyle(
               fontSize: 28,
-            ))
-          ]
-        ),
+            )),),
       ),
     );
   }
 
   Widget selectAs(){
-    return ListTile(
-      title: Text('Pilih Login Level'),
-      trailing: DropdownButton(
-        value: valOfLoginLevel,
-        onChanged: ((String newVal){
-          setState(() {
-            valOfLoginLevel=newVal;
-          });
-        }),
-        items: dropDownItems,
-      ),
+    return DropdownButtonFormField(
+      value: valOfLoginLevel,
+      hint:Text('Pilih Login Level'),
+      onChanged: ((String newVal){
+        setState(() {
+          valOfLoginLevel=newVal;
+        });
+      }),
+      items: dropDownItems,
     );
+    // return ListTile(
+    //   title: Text('Pilih Login Level'),
+    //   trailing: DropdownButton(
+    //     value: valOfLoginLevel,
+    //     onChanged: ((String newVal){
+    //       setState(() {
+    //         valOfLoginLevel=newVal;
+    //       });
+    //     }),
+    //     items: dropDownItems,
+    //   ),
+    // );
   }
 
   Widget inputEmail(){
@@ -124,32 +130,21 @@ class _HomeState extends State<Home> {
       return SizedBox();
     }
   }
-  Widget boxCover(){
-    return Stack(
-      children: [
-        Container(
-          color: Colors.pink[400],
-          height: 200,
-        ),
-        loginForm()
-      ],
-    );
-  }
   Widget loginForm(){
     return Container(
         child: Card(
           shape: RoundedRectangleBorder(
-            borderRadius:BorderRadius.only(
-              topLeft:Radius.circular(40.0),
-              topRight:Radius.circular(40.0),
+            borderRadius:BorderRadius.all(
+              Radius.circular(20.0)
             )
           ),
           margin: EdgeInsets.all(10.0),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(10,30,10,10),
+            padding: EdgeInsets.fromLTRB(20,30,20,20),
             child: Wrap(
               direction: Axis.horizontal,
               runSpacing: 15.0,
+              spacing: 10.0,
               crossAxisAlignment: WrapCrossAlignment.center,
               children: <Widget>[
                 headerLogin(),
@@ -173,9 +168,16 @@ class _HomeState extends State<Home> {
           elevation: 0.6,
           backgroundColor: Colors.blueAccent,
         ),
-        body:Column(children: <Widget>[
-          boxCover()
-        ],),       
+        body:Stack(
+          children: [ 
+            Container(
+              color: Colors.pink[400],
+              height: 200,
+            ),
+            loginForm()
+          ],
+        ),       
     );
   }
 }
+// rafikbojes, 09:50 AM, 25/06/2020
