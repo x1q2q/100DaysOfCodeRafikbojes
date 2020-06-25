@@ -9,11 +9,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter widget',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.blue,
       ),
       home: Home(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
-// rafikbojes, 11:50 PM 22/06/2020
+// rafikbojes, 08:00 AM 25/06/2020
