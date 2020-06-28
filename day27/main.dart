@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'page9/home.dart';
+import 'page9/backdropbar.dart';
+import 'page9/sliverbar.dart';
 
 void main() => runApp(new MyApp());
 
@@ -9,11 +11,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter widget',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.purple,
       ),
-      home: Home(),
+      routes: {
+        '/':(context) => Home(),
+        '/backdropbar':(context) => Backdropbar(),
+        '/sliverbar':(context) => Sliverbar()
+      },
       debugShowCheckedModeBanner: false,
     );
   }
 }
-// rafikbojes, 11:34 PM 28/06/2020
+// rafikbojes, 10:30 PM 28/06/2020
