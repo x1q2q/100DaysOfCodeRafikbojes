@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'animasi1.dart';
+import 'animasi2.dart';
+import 'animasi3.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -6,7 +9,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  double opacity = 1.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,50 +18,11 @@ class _HomeState extends State<Home> {
         elevation: 0.4,
         backgroundColor: Colors.orange,
       ),
-      body: Container(
+      body: SingleChildScrollView(
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-            Card(
-              margin: EdgeInsets.all(8),
-              color: Colors.orange[100],
-              elevation: 0.3,
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text('Contoh Animasi1',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black54,
-                            ))),
-                    Container(
-                      color: Colors.orange[50],
-                      height: 100,
-                      child: Wrap(
-                        children: <Widget>[
-                          GestureDetector(
-                              child: AnimatedOpacity(
-                                duration: Duration(seconds: 1),
-                                opacity: this.opacity,
-                                child: Container(
-                                  height: 100.0,
-                                  width: 100.0,
-                                  color: Colors.red[300],
-                                ),
-                              ),
-                              onTap: () {
-                                setState(
-                                    () => this.opacity = 1.0 - this.opacity);
-                              }),
-                        ],
-                      ),
-                    ),
-                  ]),
-            )
-          ])),
+              children: <Widget>[Animasi1(), Animasi2(), Animasi3()])),
     );
   }
 }
+//rafikbojes, 6:20 AM 29/06/2020
