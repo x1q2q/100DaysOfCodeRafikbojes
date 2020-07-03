@@ -1,40 +1,38 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'builder_animasi.dart';
+import 'lottie_animasi.dart';
+import 'lowlevel_animasi.dart';
+import 'widget_animasi.dart';
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  @override
+class _HomeState extends State<Home> {
+  String valAnimasi;
   void initState() {
     super.initState();
-    this._controller =
-        AnimationController(duration: Duration(seconds: 1), vsync: this);
+    valAnimasi = 'Animasi Builder';
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    this._controller.dispose();
-  }
+  static const animasiItem = <String>[
+    'Animasi Builder',
+    'Animasi Lottie',
+    'Animasi LowLevel',
+    'Animasi Widget'
+  ];
+  final List<DropdownMenuItem<String>> listItem = animasiItem
+      .map((String val) =>
+          DropdownMenuItem<String>(value: val, child: Text(val)))
+      .toList();
 
-  Widget containerAnimasi() {
-    final rotateAnimation =
-        Tween<double>(begin: 0, end: pi).animate(this._controller);
-    return Column(children: <Widget>[
-      AnimatedBuilder(
-          animation: rotateAnimation,
-          child: FlutterLogo(size: 72.0),
-          builder: (context, child) {
-            return Transform.rotate(
-              angle: rotateAnimation.value,
-              child: child,
-            );
-          })
-    ]);
+  Widget _dropdownBtn() {
+    return DropdownButtonFormField(
+      value: valAnimasi,
+      onChanged: ((String vl) => setState(() => valAnimasi = vl)),
+      items: listItem,
+    );
   }
 
   @override
@@ -46,17 +44,25 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         elevation: 0.3,
         backgroundColor: Colors.blue[800],
       ),
-      body: Column(
-        children: <Widget>[
-          RaisedButton(
-              child: Text('Animasi Forward'),
-              onPressed: () => _controller.forward()),
-          RaisedButton(
-              child: Text('Animasi Reverse'),
-              onPressed: () => _controller.reverse()),
-          containerAnimasi()
-        ],
+      body: Container(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Center(
+                child: this.valAnimasi == 'Animasi Lottie'
+                    ? LottieAnimasi()
+                    : this.valAnimasi == 'Animasi LowLevel'
+                        ? LowlevelAnimasi()
+                        : this.valAnimasi == 'Animasi Widget'
+                            ? WidgetAnimasi()
+                            : BuilderAnimasi()),
+            _dropdownBtn()
+          ],
+        ),
       ),
     );
   }
 }
+// rafikbojes, 10:54 03/07/2020
