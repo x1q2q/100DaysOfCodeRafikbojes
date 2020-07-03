@@ -8,7 +8,7 @@ class PutarVideo extends StatefulWidget {
 
 class _PutarVideoState extends State<PutarVideo> {
   VideoPlayerController _vidController;
-  VideoPalyerController _audController;
+  VideoPlayerController _audController;
 
   @override
   void initState() {
@@ -18,6 +18,7 @@ class _PutarVideoState extends State<PutarVideo> {
       ..addListener(() => setState(() {}))
       ..setLooping(true)
       ..initialize();
+    // ..initialize();
     _audController = VideoPlayerController.network(
         'http://file-examples.com/wp-content/uploads/2017/11/file_example_MP3_700KB.mp3')
       ..addListener(() => setState(() {}))
@@ -32,14 +33,14 @@ class _PutarVideoState extends State<PutarVideo> {
       children: <Widget>[
         ListTile(title: Text('Putar Online Video')),
         Center(
-          child: _vidController.value.initialize
+          child: _vidController.value.initialized
               ? _buildVideoPlayerUI()
               : LinearProgressIndicator(),
         ),
         Divider(height: 10),
         ListTile(title: Text('Putar Online Audio')),
         Center(
-          child: _vidController.value.initialize
+          child: _vidController.value.initialized
               ? _buildAudioPlayerUI()
               : LinearProgressIndicator(),
         ),

@@ -14,7 +14,7 @@ class _AmbilGambarState extends State<AmbilGambar> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ListView(
+        child: ListView(
       children: <Widget>[
         OutlineButton.icon(
           icon: Icon(Icons.photo_album),
@@ -26,18 +26,20 @@ class _AmbilGambarState extends State<AmbilGambar> {
           onPressed: () async => await _ambilDariKamera(),
           label: Text('Ambil dari Kamera'),
         ),
-        this._imgFile==null?Placeholder():Image.file(this._imgFile);
+        this._imgFile == null ? Placeholder() : Image.file(this._imgFile)
       ],
     ));
   }
-  Future<Null> _ambilDariGaleri() async{
-    final PickedFile fileTerpilih = 
-    await _picker.getImage(source: ImageSource.gallery);
-    setState(()=>this._imgFile = File(pickedFile.path));
+
+  Future<Null> _ambilDariGaleri() async {
+    final PickedFile fileTerpilih =
+        await _picker.getImage(source: ImageSource.gallery);
+    setState(() => this._imgFile = File(fileTerpilih.path));
   }
-  Future<Null> _ambilDariKamera() async{
-    final PickedFile fileTerpilih = 
-    await _picker.getImage(source: ImageSource.camera);
-    setState(()=>this._imgFile = File(pickedFile.path));
+
+  Future<Null> _ambilDariKamera() async {
+    final PickedFile fileTerpilih =
+        await _picker.getImage(source: ImageSource.camera);
+    setState(() => this._imgFile = File(fileTerpilih.path));
   }
 }

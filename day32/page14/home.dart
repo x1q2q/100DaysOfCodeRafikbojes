@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'putar_video.dart';
+// import 'putar_video.dart';
 import 'ambil_gambar.dart';
 
 class Home extends StatefulWidget {
@@ -25,7 +25,7 @@ class HomeState extends State<Home> {
             AmbilGambar(),
             Divider(thickness: 10),
             Center(child: Text('Putar Video/Audio Player')),
-            PutarVideo()
+            // PutarVideo()
           ])),
     );
   }
