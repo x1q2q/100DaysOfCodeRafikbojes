@@ -21,6 +21,9 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter_markdown: ^0.4.2
+  url_launcher: ^5.4.11
+  flutter_webview_plugin: ^0.3.11
   image_picker: ^0.6.7+3
   video_player: ^0.10.11+2
   backdrop: ^0.4.1
