@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'putar_video.dart';
-import 'ambil_gambar.dart';
+import 'putar_video.dart';
+// import 'ambil_gambar.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -17,16 +17,8 @@ class HomeState extends State<Home> {
         elevation: 0.3,
         backgroundColor: Colors.blue[800],
       ),
-      body: SingleChildScrollView(
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-            Center(child: Text('Mengambil Gambar')),
-            AmbilGambar(),
-            Divider(thickness: 10),
-            Center(child: Text('Putar Video/Audio Player')),
-            // PutarVideo()
-          ])),
+      body: PutarVideo(),
+      // body: AmbilGambar(),
     );
   }
 }

@@ -14,7 +14,7 @@ class _PutarVideoState extends State<PutarVideo> {
   void initState() {
     super.initState();
     _vidController = VideoPlayerController.network(
-        'http://flutter.github.io/asset-for-api-docs/assets/videos/butterfly.mp4')
+        'http://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4')
       ..addListener(() => setState(() {}))
       ..setLooping(true)
       ..initialize();
