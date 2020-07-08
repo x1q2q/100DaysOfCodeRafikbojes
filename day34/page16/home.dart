@@ -11,17 +11,14 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter Widget', style: TextStyle(color: Colors.white)),
-        centerTitle: true,
-        elevation: 0.3,
-        backgroundColor: Colors.pink[800],
-      ),
-      body: SingleChildScrollView(
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[TimechartSeries(), PiechartSeries()])),
-    );
+        appBar: AppBar(
+          title: Text('Flutter Widget', style: TextStyle(color: Colors.white)),
+          centerTitle: true,
+          elevation: 0.3,
+          backgroundColor: Colors.pink[800],
+        ),
+        // body: PiechartSeries(),
+        body: TimechartSeries());
   }
 }
-// rafikbojes, 11:18 PM 30/06/2020
+// rafikbojes, 2:23 PM 08/07/2020
