@@ -43,3 +43,4 @@ class _AmbilGambarState extends State<AmbilGambar> {
     setState(() => this._imgFile = File(fileTerpilih.path));
   }
 }
+// rafikbojes, 3:07 PM 08/07/2020
