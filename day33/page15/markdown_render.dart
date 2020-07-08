@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-// import 'package:url_launcher/url_launcher.dart';
 
 class MarkdownRender extends StatefulWidget {
   @override
@@ -9,9 +8,9 @@ class MarkdownRender extends StatefulWidget {
 
 class _MarkdownRenderState extends State<MarkdownRender> {
   String textRender = '''
-  #Contoh Markdown (H1)
-  
-  ##Contoh (H2)
+  # Contoh Markdown (H1)
+  contoh h2 di bawah
+  ## Contoh (H2)
   If the _conflicting_ dependency is __not__ itself a package, 
   but an Android-specific library like guava, 
   the dependency override declaration must be added to:
@@ -37,3 +36,5 @@ class _MarkdownRenderState extends State<MarkdownRender> {
     return Scrollbar(child: Markdown(data: textRender));
   }
 }
+
+// rafikbojes, 2:32 PM, 08/07/2020
