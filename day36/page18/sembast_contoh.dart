@@ -88,6 +88,12 @@ class _SembastContohState extends State<SembastContoh> {
     print('database terdelete $count');
   }
 
+  Widget cardList() {
+    return ListView(
+      children: this._todos.map(_itemToListTile).toList(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<bool>(
@@ -97,9 +103,9 @@ class _SembastContohState extends State<SembastContoh> {
           return Center(child: CircularProgressIndicator());
         }
         return Scaffold(
-          body: ListView(
-            children: this._todos.map(_itemToListTile).toList(),
-          ),
+          body: this._todos.isEmpty
+              ? Center(child: Text('Data sembast masih kosong'))
+              : cardList(),
           floatingActionButton: _buildActionBtn(),
         );
       },
