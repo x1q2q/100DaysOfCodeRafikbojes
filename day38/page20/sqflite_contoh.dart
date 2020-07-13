@@ -101,6 +101,12 @@ class _SqfliteContohState extends State<SqfliteContoh> {
     return true;
   }
 
+  Widget cardList() {
+    return ListView(
+      children: this._todo.map(_itemToListTile).toList(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<bool>(
@@ -109,9 +115,9 @@ class _SqfliteContohState extends State<SqfliteContoh> {
         if (!snapshot.hasData || snapshot.data == false)
           return Center(child: CircularProgressIndicator());
         return Scaffold(
-          body: ListView(
-            children: this._todo.map(_itemToListTile).toList(),
-          ),
+          body: this._todo.isEmpty
+              ? Center(child: Text('Data sq(f)lite masih kosong'))
+              : cardList(),
           floatingActionButton: _buildActionBtn(),
         );
       },
