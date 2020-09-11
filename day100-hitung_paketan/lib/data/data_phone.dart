@@ -1,0 +1,3 @@
+class DataPhone {
+  String konter;
+}
